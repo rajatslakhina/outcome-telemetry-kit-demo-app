@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "outcome-telemetry-kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rajatslakhina/outcome-telemetry-kit.git",
+      "state" : {
+        "revision" : "3ae00268a7fb79f7be382f0a831b91b30d49f9c9",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
