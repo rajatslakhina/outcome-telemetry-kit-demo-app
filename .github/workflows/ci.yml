@@ -29,7 +29,7 @@ jobs:
       # (SWIFT_TREAT_WARNINGS_AS_ERRORS in project.pbxproj). Passing it on the
       # command line would also apply to the remote package, which Xcode builds
       # with -suppress-warnings, and the two flags conflict.
-      - name: Build for any iOS Simulator (app target: warnings are errors)
+      - name: Build for any iOS Simulator (app target warnings are errors)
         run: |
           xcodebuild build -project Demo.xcodeproj -scheme Demo \
             -destination 'generic/platform=iOS Simulator' \
