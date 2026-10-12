@@ -25,9 +25,12 @@ jobs:
         run: xcodebuild -resolvePackageDependencies -project Demo.xcodeproj -scheme Demo
       - name: Show the resolved version
         run: find . -name Package.resolved -not -path "./build/*" -print -exec cat {} \;
-      - name: Build for any iOS Simulator
+      # Warnings are errors for the app target via its build settings
+      # (SWIFT_TREAT_WARNINGS_AS_ERRORS in project.pbxproj). Passing it on the
+      # command line would also apply to the remote package, which Xcode builds
+      # with -suppress-warnings, and the two flags conflict.
+      - name: Build for any iOS Simulator (app target: warnings are errors)
         run: |
           xcodebuild build -project Demo.xcodeproj -scheme Demo \
             -destination 'generic/platform=iOS Simulator' \
-            -disableAutomaticPackageResolution \
-            SWIFT_TREAT_WARNINGS_AS_ERRORS=YES CODE_SIGNING_ALLOWED=NO
+            -disableAutomaticPackageResolution CODE_SIGNING_ALLOWED=NO
